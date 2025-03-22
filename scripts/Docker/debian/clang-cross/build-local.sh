@@ -9,8 +9,8 @@ DEBIAN_VERSION=$3
 if [ -z "$DEBIAN_VERSION" ]; then
   case $ARCH in
     loongarch64) DEBIAN_VERSION=13 ;;
-    riscv64) DEBIAN_VERSION=12 ;;
-    *) DEBIAN_VERSION=11       ;;
+    riscv64) DEBIAN_VERSION=12     ;;
+    *) DEBIAN_VERSION=11           ;;
   esac
 fi
 
