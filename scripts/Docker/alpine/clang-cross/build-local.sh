@@ -7,6 +7,7 @@ ARCH=$1
 ALPINE_VERSION=$3
 if [ -z "$ALPINE_VERSION" ]; then
   case $ARCH in
+    loongarch64) ALPINE_VERSION=3.21 ;;
     riscv64) ALPINE_VERSION=3.20 ;;
     *) ALPINE_VERSION=3.17       ;;
   esac
