@@ -50,7 +50,7 @@ RUN (mkdir -p /skia-utils/libfontconfig1 \
     && cp -R usr/lib/*/* /usr/${TOOLCHAIN_ARCH}/lib/ )
 
 # Install the .NET SDK
-ARG DOTNET_SDK_VERSION=9.0
+ARG DOTNET_SDK_VERSION=8.0
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT 1
 RUN curl https://dot.net/v1/dotnet-install.sh -L -o dotnet-install.sh \
     && bash dotnet-install.sh --channel ${DOTNET_SDK_VERSION} --install-dir /usr/share/dotnet --verbose \
