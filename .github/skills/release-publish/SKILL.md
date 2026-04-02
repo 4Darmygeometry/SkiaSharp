@@ -17,7 +17,7 @@ description: >
 
 Publish packages to NuGet.org and finalize releases.
 
-⚠️ **NO UNDO:** This is step 3 of 3. See [releasing.md](../../../documentation/releasing.md) for full workflow.
+⚠️ **NO UNDO:** This is step 3 of 3. See [releasing.md](../../../documentation/dev/releasing.md) for full workflow.
 
 ## ⚠️ Branch Protection (COMPLIANCE REQUIRED)
 
@@ -243,10 +243,10 @@ After creating the release, annotate each PR line with **platform** and **commun
 - Full annotation process and examples
 
 **Quick summary:**
-1. Get release body: `gh release view {tag} --json body -q '.body' > /tmp/release-body.md`
+1. Get release body: `gh release view {tag} --json body -q '.body' > /tmp/skiasharp/release/release-body.md`
 2. For each PR: determine platform emoji, add ❤️ for non-mattleibow contributors
 3. Build sections: Breaking Changes (if any), New Features (if any), What's Changed (all)
-4. Update release: `gh release edit {tag} --notes-file /tmp/release-body.md`
+4. Update release: `gh release edit {tag} --notes-file /tmp/skiasharp/release/release-body.md`
 
 ---
 
@@ -300,5 +300,5 @@ If you've partially completed and need to resume:
 
 ## Resources
 
-- [releasing.md](../../../documentation/releasing.md) — Version patterns, tag formats, workflow diagrams
+- [releasing.md](../../../documentation/dev/releasing.md) — Version patterns, tag formats, workflow diagrams
 - [references/release-notes.md](references/release-notes.md) — Emoji annotation details
