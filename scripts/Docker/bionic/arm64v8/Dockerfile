@@ -1,5 +1,5 @@
 # Arguments:
-#   DOTNET_SDK_VERSION   - the version of dotnet for the Cake script        [ 8.0 | * ]
+#   DOTNET_SDK_VERSION   - the version of dotnet for the Cake script        [ 10.0 | * ]
 FROM debian:bookworm
 
 # Install the required packages
@@ -30,7 +30,7 @@ RUN chmod +x /usr/bin/qemu-aarch64-static
 COPY . .
 
 # Install the .NET SDK
-ARG DOTNET_SDK_VERSION=8.0
+ARG DOTNET_SDK_VERSION=10.0
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 RUN wget https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.sh -O dotnet-install.sh \
     && bash dotnet-install.sh --channel ${DOTNET_SDK_VERSION} --install-dir /usr/share/dotnet --verbose \
