@@ -22,9 +22,7 @@ RUN wget https://dl.google.com/android/repository/android-ndk-r26b-linux.zip && 
 ENV ANDROID_NDK_HOME /opt/android-ndk-r26b
 ENV PATH $PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
 
-# AArch64 qemu emulation
-COPY qemu-aarch64-static /usr/bin/qemu-aarch64-static
-RUN chmod +x /usr/bin/qemu-aarch64-static
+# AArch64 qemu emulation is provided by the installed packages/host binfmt setup
 
 # Copy source
 COPY . .
