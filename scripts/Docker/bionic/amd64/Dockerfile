@@ -35,11 +35,11 @@ RUN wget https://builds.dotnet.microsoft.com/dotnet/scripts/v1/dotnet-install.sh
 
 WORKDIR /work
 
-# Cmake
+# Cmake, target architecture x86_64, Android 10.0 (API 29), use clang
 RUN cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake \
-          -DANDROID_ABI=x86_64 \             # target architecture
-          -DANDROID_NATIVE_API_LEVEL=29 \    # Android 10.0 (API 29)
-          -DANDROID_TOOLCHAIN=clang \        # use clang
+          -DANDROID_ABI=x86_64 \
+          -DANDROID_NATIVE_API_LEVEL=29 \
+          -DANDROID_TOOLCHAIN=clang \
           -DCMAKE_BUILD_TYPE=Release \
           -B build \
           .
