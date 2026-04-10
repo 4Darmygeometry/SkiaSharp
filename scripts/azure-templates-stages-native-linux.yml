@@ -39,7 +39,7 @@ stages:
                 variant: alpine
                 docker: scripts/Docker/alpine
                 target: externals-linux-clang-cross
-            - ${{ each arch in split('arm64,x64, ',') }}:
+            - ${{ each arch in split('arm64,x64', ',') }}:
               - arch: ${{ arch }}
                 variant: bionic
                 docker: scripts/Docker/bionic
