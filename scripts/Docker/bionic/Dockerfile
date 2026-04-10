@@ -17,7 +17,7 @@ RUN case ${BUILD_ARCH} in \
 # Install the required packages
 RUN apt-get update \
     && apt-get install -y \
-        curl python3 git ninja-build unzip \
+        build-essential curl python3 git ninja-build unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure Android NDK r26b
