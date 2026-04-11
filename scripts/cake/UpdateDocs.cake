@@ -81,6 +81,7 @@ async Task<NuGetDiff> CreateNuGetDiffAsync()
         } else {
             Verbose($"      No VSIX search path found at: {searchPath}");
         }
+    return Task.CompletedTask;
     }
         
     async Task AddDep(string id, string platform, string type = "release")
