@@ -57,7 +57,7 @@ async Task<NuGetDiff> CreateNuGetDiffAsync()
 
     return comparer;
 
-    async Task AddVsixDep(string id, string localPath, string type = "url")
+    Task AddVsixDep(string id, string localPath, string type = "url")
     {
         var url = GetVersion(id, type);
         var fileName = System.IO.Path.GetFileName(new Uri(url).LocalPath);
