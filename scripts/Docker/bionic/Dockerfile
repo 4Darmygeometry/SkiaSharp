@@ -35,7 +35,9 @@ RUN . /etc/skia-env \
 # Set cross-compiler to NDK clang
 RUN . /etc/skia-env \
     && echo "export CC=${ANDROID_TRIPLE}-clang" >> /etc/skia-env \
-    && echo "export CXX=${ANDROID_TRIPLE}-clang++" >> /etc/skia-env
+    && echo "export CXX=${ANDROID_TRIPLE}-clang++" >> /etc/skia-env \
+    && echo "export AR=llvm-ar" >> /etc/skia-env \
+    && echo "export LD=lld" >> /etc/skia-env
 
 # Install the .NET SDK
 ARG DOTNET_SDK_VERSION=10.0
