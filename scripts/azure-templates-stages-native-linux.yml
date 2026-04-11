@@ -39,6 +39,16 @@ stages:
                 variant: alpine
                 docker: scripts/Docker/alpine
                 target: externals-linux-clang-cross
+
+      - template: /scripts/azure-templates-jobs-linux-matrix.yml@self # Build Native Linux (Bionic)
+        parameters:
+          buildExternals: ${{ parameters.buildExternals }}
+          buildAgent: ${{ parameters.buildAgentLinuxNative }}
+          use1ESPipelineTemplates: ${{ parameters.use1ESPipelineTemplates }}
+          builds:
+            - name: ''
+              additionalArgs: --verifyExcluded=fontconfig
+          matrix:
             - ${{ each arch in split('arm64,x64', ',') }}:
               - arch: ${{ arch }}
                 variant: bionic

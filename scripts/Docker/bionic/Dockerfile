@@ -2,7 +2,7 @@
 #   DOTNET_SDK_VERSION   - the version of dotnet for the Cake script        [ 10.0 | * ]
 #   BUILD_ARCH           - the target architecture to build for             [ x64 | arm64 ]
 
-FROM debian:trixie
+FROM mcr.microsoft.com/mirror/docker/library/debian:12
 
 # Set the architecture-specific variables based on the value of the BUILD_ARCH argument
 ARG BUILD_ARCH=x64
@@ -17,7 +17,7 @@ RUN case ${BUILD_ARCH} in \
 # Install the required packages
 RUN apt-get update \
     && apt-get install -y \
-        build-essential curl python3 git ninja-build unzip \
+        binutils curl python3 git ninja-build unzip \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure Android NDK r26b
@@ -30,7 +30,7 @@ ENV PATH=$PATH:$ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin
 # Create empty libpthread stub - Bionic bundles pthreads into libc, but
 # Skia's GN build adds -lpthread for target_os='linux' builds.
 RUN . /etc/skia-env \
-    && llvm-ar rcs $ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/$ANDROID_SYSROOT_LIB/libpthread.a
+    && printf '!<arch>\n' > $ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/$ANDROID_SYSROOT_LIB/libpthread.a
 
 # Set cross-compiler to NDK clang
 RUN . /etc/skia-env \
