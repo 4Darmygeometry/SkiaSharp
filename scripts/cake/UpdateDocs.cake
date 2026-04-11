@@ -57,7 +57,7 @@ async Task<NuGetDiff> CreateNuGetDiffAsync()
 
     return comparer;
 
-    Task AddVsixDep(string id, string localPath, string type = "url")
+    async Task AddVsixDep(string id, string localPath, string type = "url")
     {
         var url = GetVersion(id, type);
         var fileName = System.IO.Path.GetFileName(new Uri(url).LocalPath);
@@ -81,7 +81,6 @@ async Task<NuGetDiff> CreateNuGetDiffAsync()
         } else {
             Verbose($"      No VSIX search path found at: {searchPath}");
         }
-    return Task.CompletedTask;
     }
         
     async Task AddDep(string id, string platform, string type = "release")
